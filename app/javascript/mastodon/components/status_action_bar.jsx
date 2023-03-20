@@ -69,7 +69,7 @@ class StatusActionBar extends ImmutablePureComponent {
     onReply: PropTypes.func,
     onFavourite: PropTypes.func,
     onReblog: PropTypes.func,
-    onV4VSendPaymentClick: PropTypes.func,
+    onV4VSendPayment: PropTypes.func,
     onDelete: PropTypes.func,
     onDirect: PropTypes.func,
     onMention: PropTypes.func,
@@ -141,8 +141,8 @@ class StatusActionBar extends ImmutablePureComponent {
   };
 
   handleV4VSendPaymentClick = e => {
-    console.log('status_action_bar');
-    console.log('handleV4VSendPaymentClick e', e);
+    console.log('status_action_bar handleV4VSendPaymentClick', e);
+    this.props.onV4VSendPayment(this.props.status, e);
   };
 
   handleBookmarkClick = () => {

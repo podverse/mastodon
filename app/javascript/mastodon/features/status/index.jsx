@@ -313,8 +313,7 @@ class Status extends ImmutablePureComponent {
   };
 
   handleV4VSendPaymentClick = (status, e) => {
-    console.log('status/index.js');
-    console.log('handleV4VSendPaymentClick', status, e);
+    console.log('status/index.js handleV4VSendPaymentClick', status, e);
   };
 
   handleBookmarkClick = (status) => {

@@ -115,6 +115,11 @@ const mapDispatchToProps = (dispatch, { intl, contextType }) => ({
     }
   },
 
+  onV4VSendPayment (status, e) {
+    console.log('status_container.jsx');
+    console.log('onV4VSendPayment', status, e);
+  },
+
   onBookmark (status) {
     if (status.get('bookmarked')) {
       dispatch(unbookmark(status));
