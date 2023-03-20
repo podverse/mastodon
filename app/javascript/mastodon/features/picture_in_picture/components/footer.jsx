@@ -114,6 +114,8 @@ class Footer extends ImmutablePureComponent {
     dispatch(reblog(status, privacy));
   };
 
+  /* TODO: add handleV4VSendPaymentClick to picture_in_picture footer?  */
+
   handleReblogClick = e => {
     const { dispatch, status } = this.props;
     const { signedIn } = this.context.identity;

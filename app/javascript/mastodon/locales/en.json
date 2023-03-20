@@ -601,6 +601,7 @@
   "status.uncached_media_warning": "Not available",
   "status.unmute_conversation": "Unmute conversation",
   "status.unpin": "Unpin from profile",
+  "status.v4v_send_payment": "Send V4V Payment",
   "subscribed_languages.lead": "Only posts in selected languages will appear on your home and list timelines after the change. Select none to receive posts in all languages.",
   "subscribed_languages.save": "Save changes",
   "subscribed_languages.target": "Change subscribed languages for {target}",

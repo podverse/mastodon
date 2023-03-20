@@ -20,6 +20,7 @@ const messages = defineMessages({
   reblog_private: { id: 'status.reblog_private', defaultMessage: 'Boost with original visibility' },
   cancel_reblog_private: { id: 'status.cancel_reblog_private', defaultMessage: 'Unboost' },
   cannot_reblog: { id: 'status.cannot_reblog', defaultMessage: 'This post cannot be boosted' },
+  v4v_send_payment: { id: 'status.v4v_send_payment', defaultMessage: 'Send V4V payment' },
   favourite: { id: 'status.favourite', defaultMessage: 'Favourite' },
   bookmark: { id: 'status.bookmark', defaultMessage: 'Bookmark' },
   more: { id: 'status.more', defaultMessage: 'More' },
@@ -62,6 +63,7 @@ class ActionBar extends React.PureComponent {
     onReply: PropTypes.func.isRequired,
     onReblog: PropTypes.func.isRequired,
     onFavourite: PropTypes.func.isRequired,
+    onV4VSendPaymentClick: PropTypes.func.isRequired,
     onBookmark: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
@@ -90,6 +92,10 @@ class ActionBar extends React.PureComponent {
 
   handleFavouriteClick = () => {
     this.props.onFavourite(this.props.status);
+  };
+
+  handleV4VSendPaymentClick = (e) => {
+    this.props.onV4VSendPaymentClick(this.props.status, e);
   };
 
   handleBookmarkClick = (e) => {
@@ -281,11 +287,15 @@ class ActionBar extends React.PureComponent {
       reblogTitle = intl.formatMessage(messages.cannot_reblog);
     }
 
+    const doesNotHaveV4VAddress = false;
+    const v4vSendPaymentTitle = intl.formatMessage(messages.v4v_send_payment);
+
     return (
       <div className='detailed-status__action-bar'>
         <div className='detailed-status__button'><IconButton title={intl.formatMessage(messages.reply)} icon={status.get('in_reply_to_account_id') === status.getIn(['account', 'id']) ? 'reply' : replyIcon} onClick={this.handleReplyClick} /></div>
         <div className='detailed-status__button' ><IconButton className={classNames({ reblogPrivate })} disabled={!publicStatus && !reblogPrivate} active={status.get('reblogged')} title={reblogTitle} icon='retweet' onClick={this.handleReblogClick} /></div>
         <div className='detailed-status__button'><IconButton className='star-icon' animate active={status.get('favourited')} title={intl.formatMessage(messages.favourite)} icon='star' onClick={this.handleFavouriteClick} /></div>
+        <div className='detailed-status__button' ><IconButton className='v4v-send-payment-icon' disabled={doesNotHaveV4VAddress} active={status.get('v4vPaymentSent')} title={v4vSendPaymentTitle} icon='money' onClick={this.handleV4VSendPaymentClick} /></div>
         <div className='detailed-status__button'><IconButton className='bookmark-icon' disabled={!signedIn} active={status.get('bookmarked')} title={intl.formatMessage(messages.bookmark)} icon='bookmark' onClick={this.handleBookmarkClick} /></div>
 
         {shareButton}

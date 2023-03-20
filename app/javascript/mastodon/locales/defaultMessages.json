@@ -608,6 +608,10 @@
         "id": "status.cannot_reblog"
       },
       {
+        "defaultMessage": "Send V4V Payment",
+        "id": "status.v4v_send_payment"
+      },
+      {
         "defaultMessage": "Favourite",
         "id": "status.favourite"
       },

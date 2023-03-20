@@ -312,6 +312,11 @@ class Status extends ImmutablePureComponent {
     }
   };
 
+  handleV4VSendPaymentClick = (status, e) => {
+    console.log('status/index.js');
+    console.log('handleV4VSendPaymentClick', status, e);
+  };
+
   handleBookmarkClick = (status) => {
     if (status.get('bookmarked')) {
       this.props.dispatch(unbookmark(status));
@@ -652,6 +657,7 @@ class Status extends ImmutablePureComponent {
                   onReply={this.handleReplyClick}
                   onFavourite={this.handleFavouriteClick}
                   onReblog={this.handleReblogClick}
+                  onV4VSendPaymentClick={this.handleV4VSendPaymentClick}
                   onBookmark={this.handleBookmarkClick}
                   onDelete={this.handleDeleteClick}
                   onEdit={this.handleEditClick}

@@ -412,3 +412,52 @@ export function unpinFail(status, error) {
     skipLoading: true,
   };
 }
+
+/*
+  V4V Send Payment
+  Proof-of-concept implementation code
+*/
+
+export const V4V_SEND_PAYMENT_REQUEST = 'V4V_SEND_PAYMENT_REQUEST';
+export const V4V_SEND_PAYMENT_SUCCESS = 'V4V_SEND_PAYMENT_SUCCESS';
+export const V4V_SEND_PAYMENT_FAIL    = 'V4V_SEND_PAYMENT_FAIL';
+
+export function v4vSendPayment(status, visibility) {
+  return function (dispatch, getState) {
+    console.log('v4vSendPayment')
+    console.log('status', status)
+    console.log('visibility', visibility)
+    console.log('getState', getState)
+    dispatch(v4vSendPaymentRequest(status));
+
+    const success = true
+    if (success) {
+      dispatch(v4vSendPaymentSuccess(status));
+    } else {
+      const error = new Error('v4vSendPaymentFail error')
+      dispatch(v4vSendPaymentFail(status, error));
+    }
+  };
+}
+
+export function v4vSendPaymentRequest(status) {
+  return {
+    type: V4V_SEND_PAYMENT_REQUEST,
+    status: status
+  };
+}
+
+export function v4vSendPaymentSuccess(status) {
+  return {
+    type: V4V_SEND_PAYMENT_SUCCESS,
+    status: status
+  };
+}
+
+export function v4vSendPaymentFail(status, error) {
+  return {
+    type: V4V_SEND_PAYMENT_FAIL,
+    status: status,
+    error: error
+  };
+}
